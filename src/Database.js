@@ -9,20 +9,16 @@ export default class Database {
   }
 
   execute(statement) {
-    const { action, parsedStatement } = this.parse.parse(statement);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const { action, parsedStatement } = this.parse.parse(statement);
 
-    if (!this.parse.isValid(action)) {
-      throw new DatabaseError(statement, `Syntax error: '${statement}'`);
-    }
-
-    const actions = {
-      [ActionQueries.CREATE]: () => this.create(parsedStatement),
-      [ActionQueries.INSERT]: () => this.insert(parsedStatement),
-      [ActionQueries.SELECT]: () => this.select(parsedStatement),
-      [ActionQueries.DELETE]: () => this.delete(parsedStatement),
-    };
-
-    return actions[action]();
+        if (this.parse.isValid(action)) {
+          resolve(this[action](parsedStatement));
+        }
+        reject(new DatabaseError(statement, `Syntax error: '${statement}'`));
+      }, 1000);
+    });
   }
 
   create(parsedStatement) {
@@ -75,6 +71,7 @@ export default class Database {
 
   delete(parsedStatement) {
     const [, tableName, columnWhere, valueWhere] = parsedStatement;
+
     Object.defineProperty(this.tables?.[tableName], "data", {
       value: this.tables?.[tableName].data.filter(
         (row) => row[columnWhere] !== valueWhere
