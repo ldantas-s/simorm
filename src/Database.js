@@ -22,7 +22,7 @@ export default class Database {
   }
 
   create(parsedStatement) {
-    const [, , , tableName, params] = parsedStatement;
+    const [, tableName, params] = parsedStatement;
     const columns = params?.split(", ");
     this.tables[tableName] = {
       columns: {},

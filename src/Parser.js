@@ -3,8 +3,8 @@ import { ActionQueries, ActionQueriesLabels } from "./enums/QueryActions";
 export class Parser {
   constructor() {
     this.actions = new Map([
-      [ActionQueries.CREATE, /(\w+) (\w+) (\w+) \(([\w+\s\w+,]+)\)/],
-      [ActionQueries.INSERT, /\w+\s\w+\s(\w+)\s\((.+)\)\s\w+\s\((.+)\)/],
+      [ActionQueries.CREATE, /create \w+ (\w+) \(([\w+\s\w+,]+)\)/],
+      [ActionQueries.INSERT, /insert \w+\s(\w+)\s\((.+)\)\s\w+\s\((.+)\)/],
       [ActionQueries.SELECT, /select ([\w+, \w+]+|\*) from (\w+)/],
       // [
       //   ActionQueries.SELECT,
