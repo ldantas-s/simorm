@@ -3,10 +3,14 @@
   "description": "It's a simple orm with javascript to manipulate sql commands",
   "version": "1.0.0",
   "private": true,
+  "type": "commonjs",
   "scripts": {
     "start": "nodemon ./build/index.bundle.js"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.18.2",
+    "babel-jest": "^28.1.0",
+    "jest": "^28.0.3",
     "nodemon": "^2.0.15"
   },
   "dependencies": {}
