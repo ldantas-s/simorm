@@ -1,6 +1,6 @@
-import { Parser } from "./Parser";
-import { ActionQueries } from "./enums/QueryActions";
-import { DatabaseError } from "./DatabaseError";
+import Parser from "./Parser.js";
+import { ActionQueries } from "./enums/QueryActions.js";
+import { DatabaseError } from "./DatabaseError.js";
 
 export default class Database {
   constructor() {
