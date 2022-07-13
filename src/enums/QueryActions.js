@@ -1,8 +1,13 @@
-export const ActionQueries = {
+const ActionQueries = {
   CREATE: "create",
   INSERT: "insert",
   SELECT: "select",
   DELETE: "delete",
 };
 
-export const ActionQueriesLabels = Object.values(ActionQueries);
+const ActionQueriesLabels = Object.values(ActionQueries);
+
+module.exports = {
+  ActionQueries,
+  ActionQueriesLabels,
+};

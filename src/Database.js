@@ -1,8 +1,7 @@
-import Parser from "./Parser.js";
-import { ActionQueries } from "./enums/QueryActions.js";
-import { DatabaseError } from "./DatabaseError.js";
+const Parser = require("./Parser.js");
+const DatabaseError = require("./DatabaseError.js");
 
-export default class Database {
+class Database {
   constructor() {
     this.tables = {};
     this.parse = new Parser();
@@ -79,3 +78,5 @@ export default class Database {
     });
   }
 }
+
+module.exports = Database;

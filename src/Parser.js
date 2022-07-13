@@ -1,6 +1,9 @@
-import { ActionQueries, ActionQueriesLabels } from "./enums/QueryActions.js";
+const {
+  ActionQueries,
+  ActionQueriesLabels,
+} = require("./enums/QueryActions.js");
 
-export default class Parser {
+class Parser {
   constructor() {
     this.actions = new Map([
       [ActionQueries.CREATE, /create \w+ (\w+) \(([\w+\s\w+,]+)\)/],
@@ -38,3 +41,5 @@ export default class Parser {
     return ActionQueriesLabels.includes(action);
   }
 }
+
+module.exports = Parser;
