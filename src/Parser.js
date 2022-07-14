@@ -38,7 +38,7 @@ class Parser {
   }
 
   isValid(action) {
-    return ActionQueriesLabels.includes(action);
+    return action && ActionQueriesLabels.includes(action.toLowerCase());
   }
 }
 
