@@ -1,12 +1,16 @@
 module.exports = {
   transform: {
-    "^.+\\.(js|jsx)$": "babel-jest",
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
   collectCoverage: true,
   collectCoverageFrom: [
-    "**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/vendor/**",
+    '**/*.{js,jsx}',
+    '!**/node_modules/**',
+    '!**/vendor/**',
   ],
-  coveragePathIgnorePatterns: ["./jest.config.js"],
+  coveragePathIgnorePatterns: [
+    './jest.config.js',
+    './coverage',
+    './babel.config.js',
+  ],
 };
