@@ -1,20 +1,9 @@
-const {
-  ActionQueries,
-  ActionQueriesLabels,
-} = require('./enums/QueryActions.js');
+const { ActionQueriesLabels } = require('./enums/QueryActions.js');
+const queries = require('./utils/Queries');
 
 class Parser {
   constructor() {
-    this.actions = new Map([
-      [ActionQueries.CREATE, /create \w+ (\w+) \(([\w+\s\w+,]+)\)/i],
-      [ActionQueries.INSERT, /insert \w+\s(\w+)\s\((.+)\)\s\w+\s\((.+)\)/i],
-      [ActionQueries.SELECT, /select ([\w+, \w+]+|\*) from (\w+)/i],
-      // [
-      //   ActionQueries.SELECT,
-      //   /select ([\w+, \w+]+|\*) from (\w+) where (\w+) = (\w+)/,
-      // ],
-      [ActionQueries.DELETE, /delete from (\w+) where (\w+) = (\w+)/i],
-    ]);
+    this.actions = new Map(queries);
   }
 
   parse(statement) {
