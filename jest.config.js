@@ -11,6 +11,6 @@ module.exports = {
   coveragePathIgnorePatterns: [
     './jest.config.js',
     './coverage',
-    './babel.config.js',
+    './webpack.config.js',
   ],
 };
