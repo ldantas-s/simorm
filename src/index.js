@@ -1,4 +1,4 @@
-const Database = require('./Database.js');
+import Database from './Database.js';
 
 const database = new Database();
 
@@ -16,6 +16,9 @@ database
       ),
       database.execute(
         'insert into author (id, name, age) values (3, Martin Fowler, 54)'
+      ),
+      database.execute(
+        'insert into author (id, name, age) values (4, Chad Fowler, 49)'
       ),
     ]);
   })

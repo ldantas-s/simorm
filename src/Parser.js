@@ -1,7 +1,7 @@
-const { ActionQueriesLabels } = require('./enums/QueryActions.js');
-const queries = require('./utils/Queries');
+import { ActionQueriesLabels } from './enums/QueryActions.js';
+import { queries } from './utils/Queries';
 
-class Parser {
+export class Parser {
   constructor() {
     this.actions = new Map(queries);
   }
@@ -32,5 +32,3 @@ class Parser {
     return action && ActionQueriesLabels.includes(action.toLowerCase());
   }
 }
-
-module.exports = Parser;

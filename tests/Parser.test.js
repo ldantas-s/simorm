@@ -1,4 +1,4 @@
-const Parser = require('../src/Parser');
+import { Parser } from '../src/Parser';
 
 describe('isValid', () => {
   const parser = new Parser();

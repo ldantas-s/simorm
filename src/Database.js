@@ -1,5 +1,5 @@
-const Parser = require("./Parser.js");
-const DatabaseError = require("./DatabaseError.js");
+import { Parser } from './Parser.js';
+import { DatabaseError } from './DatabaseError.js';
 
 class Database {
   constructor() {
@@ -22,22 +22,22 @@ class Database {
 
   create(parsedStatement) {
     const [, tableName, params] = parsedStatement;
-    const columns = params?.split(", ");
+    const columns = params?.split(', ');
     this.tables[tableName] = {
       columns: {},
       data: [],
     };
 
     columns.reduce((columnsObject, tableCurrentColumn) => {
-      const [columnName, typeColumn] = tableCurrentColumn.split(" ");
+      const [columnName, typeColumn] = tableCurrentColumn.split(' ');
       return Object.assign(columnsObject, { [columnName]: typeColumn });
     }, this.tables[tableName].columns);
   }
 
   insert(parsedStatement) {
     let [, tableName, fields, values] = parsedStatement;
-    fields = fields.split(", ");
-    values = values.split(", ");
+    fields = fields.split(', ');
+    values = values.split(', ');
     const row = fields.reduce(
       (obj, curr, idx) => ({ ...obj, [curr]: values[idx] }),
       {}
@@ -50,9 +50,9 @@ class Database {
     let [, columns, tableName, columnWhere, valueWhere] = parsedStatement;
     const rowsData = this.tables?.[tableName].data;
 
-    if (columns === "*") return rowsData;
+    if (columns === '*') return rowsData;
 
-    columns = columns.split(", ");
+    columns = columns.split(', ');
 
     const filteredRows = columnWhere
       ? rowsData?.filter((row) => row[columnWhere] === valueWhere)
@@ -71,7 +71,7 @@ class Database {
   delete(parsedStatement) {
     const [, tableName, columnWhere, valueWhere] = parsedStatement;
 
-    Object.defineProperty(this.tables?.[tableName], "data", {
+    Object.defineProperty(this.tables?.[tableName], 'data', {
       value: this.tables?.[tableName].data.filter(
         (row) => row[columnWhere] !== valueWhere
       ),
@@ -79,4 +79,4 @@ class Database {
   }
 }
 
-module.exports = Database;
+export default Database;

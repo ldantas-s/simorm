@@ -1,4 +1,4 @@
-class DatabaseError {
+export class DatabaseError {
   constructor(statement, message) {
     if (!message) throw Error('Please defined a message');
 
@@ -6,5 +6,3 @@ class DatabaseError {
     this.message = message;
   }
 }
-
-module.exports = DatabaseError;

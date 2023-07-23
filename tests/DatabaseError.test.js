@@ -1,4 +1,4 @@
-const DatabaseError = require('../src/DatabaseError');
+import { DatabaseError } from '../src/DatabaseError';
 
 describe('DatabaseError', () => {
   it('should return the correct object databaserror', () => {
